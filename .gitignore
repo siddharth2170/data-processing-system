@@ -1,0 +1,7 @@
+java/out/
+java/results.txt
+go/results.txt
+assets/*.png
+assets/*.txt
+qa-render/
+
