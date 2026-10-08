@@ -120,6 +120,9 @@ for style_name in ("Title", "Heading 1", "Heading 2"):
     style._element.rPr.rFonts.set(qn("w:hAnsi"), "Times New Roman")
     style.font.color.rgb = RGBColor(0, 0, 0)
     style.font.bold = True
+    p_borders = style._element.pPr.find(qn("w:pBdr")) if style._element.pPr is not None else None
+    if p_borders is not None:
+        style._element.pPr.remove(p_borders)
 
 styles["Title"].font.size = Pt(15)
 styles["Heading 1"].font.size = Pt(12)
@@ -237,7 +240,7 @@ for ref in refs:
 add_heading("Repository", 1)
 p = doc.add_paragraph(style="Body Text")
 p.paragraph_format.first_line_indent = Inches(0.5)
-p.add_run("The publication-ready repository is located in the submitted data-processing-system folder. GitHub publishing requires re-authentication for the configured account; insert the resulting repository URL before final submission.")
+p.add_run("The complete source code, execution instructions, and report are available at https://github.com/siddharth2170/data-processing-system")
 
 doc.add_page_break()
 add_heading("Appendix A", 1)
